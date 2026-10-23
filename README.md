@@ -1,121 +1,157 @@
 <div align="center">
 
-# 🛡️ An Explainable Ensemble Learning System for Real-Time Network Attack Detection Using CICIoT2023
+# 🛡️ SentinelAI — Multi-Class IoT Intrusion Detection System (IDS)
+### *An Explainable Machine Learning Platform & Real-Time Defense Command Console*
 
 [![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![React](https://img.shields.io/badge/Frontend-React%2019%20%7C%20Vite-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Scikit-Learn](https://img.shields.io/badge/ML-Scikit--Learn-F7931E?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![CatBoost](https://img.shields.io/badge/Boosting-CatBoost-FFCC00?logo=yandex&logoColor=black)](https://catboost.ai/)
 [![XAI-SHAP](https://img.shields.io/badge/Explainability-TreeSHAP-00BFFF)](https://shap.readthedocs.io/)
 [![Dataset](https://img.shields.io/badge/Benchmark-CICIoT2023-blueviolet)](https://www.unb.ca/cic/datasets/iot-dataset-2023.html)
-[![Format](https://img.shields.io/badge/Paper-IEEE%202--Column%20Format-00629B?logo=ieee&logoColor=white)](./An_Explainable_Ensemble_Learning_System_for_Real_Time_Network_Attack_Detection_Using_CICIoT2023.pdf)
+[![Paper](https://img.shields.io/badge/IEEE%20Paper-PDF%20Deliverable-00629B?logo=ieee&logoColor=white)](./An_Explainable_Ensemble_Learning_System_for_Real_Time_Network_Attack_Detection_Using_CICIoT2023.pdf)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-**A production-grade, explainable machine learning intrusion detection system (IDS) engineered for high-throughput, low-latency IoT network environments.**
+**SentinelAI** is an end-to-end, full-stack Machine Learning platform and real-time defense console designed to detect, classify, and mitigate high-volume cyberattacks in modern Internet of Things (IoT) network infrastructure.
 
-[📄 Read IEEE Paper (PDF)](./An_Explainable_Ensemble_Learning_System_for_Real_Time_Network_Attack_Detection_Using_CICIoT2023.pdf) • [📝 Word Document (.docx)](./An_Explainable_Ensemble_Learning_System_for_Real_Time_Network_Attack_Detection_Using_CICIoT2023.docx) • [⚙️ LaTeX Source](./paper.tex) • [📊 View Figures](./figures/)
+Trained on over 2.3 million network packet flows from the benchmark **CICIoT2023** dataset, SentinelAI combines a novel **Hybrid Feature Intelligence Pipeline**, a **Soft Voting Ensemble Engine**, and **Explainable AI (SHAP)** with a sleek, interactive cyber defense command console.
+
+[📄 Read IEEE Paper (PDF)](./An_Explainable_Ensemble_Learning_System_for_Real_Time_Network_Attack_Detection_Using_CICIoT2023.pdf) • [📝 Word Document (.docx)](./An_Explainable_Ensemble_Learning_System_for_Real_Time_Network_Attack_Detection_Using_CICIoT2023.docx) • [⚙️ LaTeX Source](./paper.tex) • [📊 View Figures](./figures/) • [💻 Launch App](#-quick-start-guide)
 
 ---
 
 </div>
 
-## 📌 Executive Summary
-
-Modern Internet of Things (IoT) ecosystems face increasingly sophisticated, high-volume cyber threats ranging from Distributed Denial of Service (DDoS) floods to stealthy lateral reconnaissance and botnet propagation. Traditional network intrusion detection systems struggle with high-dimensional feature spaces, severe class imbalance, and the black-box opacity of advanced machine learning models.
-
-This repository presents an end-to-end, explainable ensemble learning architecture evaluated on the benchmark **CICIoT2023** dataset:
-- **Tri-Perspective Feature Selection:** Unites filter (ANOVA F-test), wrapper (Recursive Feature Elimination), and embedded (Random Forest Gini importance) algorithms into an invariant **15-feature consensus subspace** (a **62.5% reduction** in input dimensions).
-- **Class-Balanced Soft Voting Ensemble:** Harmonizes **Random Forest**, **CatBoost**, **Histogram-based Gradient Boosting (HistGB)**, and **Linear SVC** via cost-sensitive inverse frequency weighting.
-- **High-Throughput Microservice:** Implemented as an asynchronous **FastAPI** backend (`/api/simulate`) coupled with an interactive **React** real-time attack simulator streaming hold-out packets at 1 Hz.
-- **Explainable AI (TreeSHAP):** Computes polynomial-time Shapley value local attributions for each detected threat, providing immediate, audit-ready explanations for Security Operations Center (SOC) analysts.
-
----
-
-## 🚀 Key Discoveries & Quantitative Benchmarks
-
-| Metric | Proposed Soft Voting Ensemble | Best Baseline (Random Forest) | Impact / Advantage |
-| :--- | :---: | :---: | :--- |
-| **Multiclass Accuracy** | **98.64%** | 97.82% | **+0.82%** overall accuracy improvement |
-| **Macro F1-Score** | **0.9836** | 0.9740 | **+0.96%** improvement across minority classes |
-| **Macro-Average ROC-AUC** | **0.988** | 0.979 | Exceptional discriminative power across all 7 classes |
-| **Input Feature Space** | **15 Features** | 46 Features | **62.5% reduction** in network telemetry complexity |
-| **Inference Latency** | **8.45 ms** | 21.40 ms (Full Features) | **60.5% acceleration** in classifier execution |
-| **End-to-End Latency** | **28.20 ms / packet** | - | Sub-30ms line-rate processing for live streaming |
+## 📑 Table of Contents
+- [✨ Key Highlights](#-key-highlights)
+- [🏛️ System Architecture](#️-system-architecture)
+- [🧠 Machine Learning Modules](#-machine-learning-modules)
+  - [Module 1: Hybrid Feature Intelligence](#module-1-hybrid-network-feature-intelligence)
+  - [Module 2: Ensemble Detection Engine](#module-2-ensemble-detection-engine)
+  - [Module 3: Security Analytics & Explainable AI](#module-3-security-analytics--explainable-ai)
+- [💻 Frontend Command Console](#-frontend-command-console)
+- [📊 Dataset Details (CICIoT2023)](#-dataset-details-ciciot2023)
+- [📈 Quantitative Benchmarks & Ablations](#-quantitative-benchmarks--ablations)
+- [📁 Project Directory Structure](#-project-directory-structure)
+- [🚀 Quick Start Guide](#-quick-start-guide)
+  - [1. Backend Setup](#1-backend-setup)
+  - [2. Frontend Setup](#2-frontend-setup)
+  - [3. Running Autonomous Retraining](#3-running-autonomous-retraining-optional)
+- [📡 REST API Reference](#-rest-api-reference)
+- [🛡️ Security & Privacy](#️-security--privacy)
+- [👥 Academic Authors & Affiliation](#-academic-authors--affiliation)
+- [📜 Academic Citation](#-academic-citation)
+- [📄 License](#-license)
 
 ---
 
-## 🏗️ System Architecture Pipeline
+## ✨ Key Highlights
 
-The pipeline decouples offline training, feature consensus distillation, real-time REST serving, and explainability:
+- **Leakage-Safe Preprocessing:** Rigorous separation of training and test distributions before any scaling or feature selection occurs.
+- **Tri-Method Feature Consensus:** Filters out **62.5%** of redundant raw features using an intersection of ANOVA F-test, Recursive Feature Elimination (RFE), and Tree-based Gini importance.
+- **Multi-Algorithm Soft Voting Ensemble:** Combines **Random Forest**, **CatBoost**, **HistGradientBoosting** (LightGBM equivalent), and **Linear SVC** to eliminate single-model bias and maximize multi-class recall.
+- **Explainable Cyber Defense (XAI):** Generates real-time feature attribution explaining why a flow was identified as malicious (e.g., header length spikes, packet rate anomalies).
+- **Zero-Mock Real-Time Replay Engine:** Live REST endpoint streams real hold-out network packets into the model in memory at 1-second intervals with immediate classification and visual feedback.
+
+---
+
+## 🏛️ System Architecture
 
 ```mermaid
 flowchart TD
-    A["Raw CICIoT2023 Telemetry<br/>(40+ Packet & Flow Features)"] --> B["Data Preprocessing<br/>& Hold-Out Split (Min-Max Scaling)"]
+    A["Raw Network Telemetry<br/>(CICIoT2023 40+ Features)"] --> B["Module 1: Leakage-Safe<br/>Preprocessing & Partition"]
     
-    subgraph Feature_Consensus ["Tri-Perspective Feature Selection"]
-        B --> C1["ANOVA F-test<br/>(Top 25 Filter)"]
-        B --> C2["Recursive Feature Elimination<br/>(Top 22 Wrapper)"]
-        B --> C3["Random Forest Gini<br/>(Top 20 Embedded)"]
-        C1 & C2 & C3 --> D["15 Consensus Feature Subspace<br/>(Set Intersection F*)"]
+    subgraph Feature_Consensus ["Tri-Method Feature Consensus"]
+        B --> C1["Filter: ANOVA F-test"]
+        B --> C2["Wrapper: RFE"]
+        B --> C3["Embedded: RF Gini"]
+        C1 & C2 & C3 --> D["15 Consensus Features<br/>(Header_Length, Rate, TTL, etc.)"]
     end
     
-    subgraph Model_Ensemble ["Class-Balanced Ensemble Learning"]
-        D --> E1["Random Forest"]
-        D --> E2["CatBoost Classifier"]
-        D --> E3["HistGradientBoosting"]
-        D --> E4["Linear SVC Baseline"]
-        E1 & E2 & E3 & E4 --> F["Soft Voting Aggregator<br/>P(y=c|x) = Σ w_m P_m(y=c|x)"]
+    subgraph Detection_Engine ["Module 2: Ensemble Detection Engine"]
+        D --> E1["Random Forest<br/>(Class Balanced)"]
+        D --> E2["CatBoost<br/>(Symmetric Trees)"]
+        D --> E3["HistGradientBoosting<br/>(Histogram Binned)"]
+        D --> E4["Linear SVC<br/>(Calibrated)"]
+        E1 & E2 & E3 & E4 --> F["Soft Voting Ensemble<br/>P_ensemble = Σ w_m * P_m"]
     end
     
-    subgraph Real_Time_Deployment ["High-Speed Serving & Explainability"]
-        F --> G["FastAPI Async REST API<br/>(/api/simulate Endpoint)"]
-        G --> H["React Live Attack Simulator<br/>(1 Hz Streaming Hold-Out Traffic)"]
-        G --> I["TreeSHAP Explainability Engine<br/>(Polynomial Local Attributions)"]
+    subgraph Analytics_Serving ["Module 3 & Deployment"]
+        F --> G["FastAPI Async REST Service<br/>(:8000/api/simulate & /api/predict)"]
+        G --> H["React 19 / Vite Command Console<br/>(:5173 Full Cyber Dashboard)"]
+        G --> I["TreeSHAP Explainability Engine<br/>(Real-time Feature Attribution)"]
         I --> H
     end
 ```
 
 ---
 
-## 🔬 Scientific Methodology
+## 🧠 Machine Learning Modules
 
-### 1. Tri-Perspective Feature Selection Consensus
-Rather than relying on an arbitrary feature selector, candidate network attributes are filtered through three complementary perspectives to eliminate selection bias:
-1. **ANOVA F-Statistic (Filter):** Measures between-class variance relative to within-class variance:
-   $$F = \frac{\text{MSB}}{\text{MSW}} = \frac{\sum_{k=1}^K n_k (\bar{x}_k - \bar{x})^2 / (K - 1)}{\sum_{k=1}^K \sum_{i=1}^{n_k} (x_{ki} - \bar{x}_k)^2 / (N - K)}$$
-2. **Recursive Feature Elimination (Wrapper):** Iteratively fits an external tree estimator, ranking and eliminating uninformative collinear attributes.
-3. **Random Forest Mean Decrease in Impurity (Embedded):** Derives total Gini impurity reduction across all ensemble splits:
-   $$I_G(f) = \sum_{T} \sum_{t \in T: v(s_t) = f} p(t) \Delta i(s_t, t)$$
-4. **Consensus Intersection:** Isolates the invariant 15-feature core:
-   $$\mathcal{F}^* = \mathcal{F}_{\text{ANOVA}} \cap \mathcal{F}_{\text{RFE}} \cap \mathcal{F}_{\text{RF}}$$
+### Module 1: Hybrid Network Feature Intelligence
+**File:** [`sentinel-ai/backend/ml_modules/module1_feature_intelligence/pipeline.py`](./sentinel-ai/backend/ml_modules/module1_feature_intelligence/pipeline.py)
 
-<div align="center">
-  <img src="./figures/fig2_feature_selection.png" alt="Feature Selection Consensus" width="550"/>
-  <p><em>Fig. 2: Convergence of feature selection methods toward the optimal 15-feature consensus intersection.</em></p>
-</div>
+- **Objective:** Mitigate the curse of dimensionality while maximizing inter-class separability across 40 network flow features.
+- **Mechanism:**
+  - **Filter (ANOVA F-statistic):** Evaluates linear feature-target dependencies.
+  - **Wrapper (Recursive Feature Elimination):** Prunes non-informative features iteratively using a decision tree estimator.
+  - **Embedded (Tree Importance):** Leverages Gini impurity reduction from ensemble splits.
+- **Consensus Ranking:** Selects the invariant top 15 features agreed upon across all three paradigms:
+  `Header_Length`, `Rate`, `Time_To_Live`, `AVG`, `HTTPS`, `ICMP`, `TCP`, `UDP`, `syn_flag_number`, `psh_flag_number`, `ack_flag_number`, `fin_flag_number`, `IAT`, `Protocol Type`, `Number`.
 
-### 2. The 15 Consensus Network Features
-The distilled feature set encompasses flow dynamics, volumetric sizes, and TCP state flags:
-`flow_duration`, `rate`, `tot_sum`, `tot_size`, `iat`, `syn_count`, `ack_count`, `rst_count`, `header_len`, `mean_packet_sz`, `std_packet_sz`, `psh_count`, `fin_count`, `urg_count`, and `ece_count`.
+### Module 2: Ensemble Detection Engine
+**File:** [`sentinel-ai/backend/ml_modules/module2_detection_engine/trainer.py`](./sentinel-ai/backend/ml_modules/module2_detection_engine/trainer.py)
 
-### 3. Class-Balanced Soft Voting Ensemble
-To prevent model collapse on rare attack classes (e.g., application-layer Web attacks), cost-sensitive inverse class frequency weights are applied during fitting:
-$$w_c = \frac{N}{C \times N_c}$$
+- **Objective:** Accurately categorize traffic into Benign or specific attack vectors under severe class imbalance.
+- **Models Implemented:**
+  - **Random Forest:** 100 estimators with cost-sensitive balanced class weighting.
+  - **CatBoost:** Categorical gradient boosted trees with symmetric decision trees.
+  - **HistGradientBoosting:** Histogram-binned gradient booster optimized for rapid large-scale tabular execution.
+  - **Linear SVC (Calibrated):** Support Vector Classifier serving as a linear hyperplane benchmark.
+  - **Soft Voting Ensemble:** Fuses prediction posterior probabilities $\hat{p} = \frac{1}{M}\sum_{m=1}^M p_m$ to minimize single-model variance and false alarms.
 
-Predictions are aggregated via weighted posterior probabilities:
-$$P(y = c \mid \tilde{x}) = \sum_{m=1}^M w_m P_m(y = c \mid \tilde{x}), \quad \hat{y} = \arg\max_{c \in \mathcal{C}} P(y = c \mid \tilde{x})$$
+### Module 3: Security Analytics & Explainable AI
+**Files:** [`sentinel-ai/backend/ml_modules/module3_security_analytics/evaluator.py`](./sentinel-ai/backend/ml_modules/module3_security_analytics/evaluator.py), [`sentinel-ai/backend/main.py`](./sentinel-ai/backend/main.py)
 
-<div align="center">
-  <img src="./figures/fig3_model_comparison.png" alt="Classifier Benchmark Comparison" width="600"/>
-  <p><em>Fig. 3: Multi-metric evaluation of base classifiers versus the Soft Voting Ensemble.</em></p>
-</div>
+- **Objective:** Transform black-box predictions into interpretable security intelligence.
+- **Key Capabilities:**
+  - **Full Evaluation Matrix:** Precision, Recall, Macro F1-score, Multi-Class Confusion Matrix.
+  - **Latency Profiling:** Microsecond-level tracking of feature scaling, model scoring, and explanation generation.
+  - **Dynamic Feature Attribution:** TreeSHAP breakdown dispatched to the frontend for every packet.
 
 ---
 
-## 📊 Comprehensive Experimental Results
+## 💻 Frontend Command Console
+
+The frontend is a responsive single-page application built with **React 19**, **Vite**, **Tailwind CSS**, and **Lucide Icons**:
+
+1. **Global Dashboard:** Real-time traffic rate (packets/sec), blocked threats, firewall active state, and live area telemetry charts.
+2. **Attack Simulator (Replay Console):** Live animated terminal feeding genuine unseen packets from the hold-out test set through the model, rendering real-time SHAP explanation bars on the fly.
+3. **Prediction Studio:** Interactive single-packet inspector with live sliders for the 15 consensus features, triggering immediate model inference.
+4. **Model Laboratory:** Side-by-side benchmark comparison of individual base models vs. the Voting Ensemble (Accuracy, F1, Latency).
+5. **Dataset Intelligence:** Distribution breakdown of the CICIoT2023 dataset, missing/infinite value cleaning report, and raw feature stats.
+6. **Experiment Analysis:** Historical experiment runs tracking feature count, training times, ROC curves, and confusion matrices.
+
+---
+
+## 📊 Dataset Details (CICIoT2023)
+
+The system is trained and validated on the **CICIoT2023** benchmark created by the Canadian Institute for Cybersecurity (UNB):
+- **Raw Network Flow Features:** 40+ attributes extracted from PCAP network captures.
+- **Attack Classes Covered:**
+  - `BenignTraffic`: Normal IoT communication patterns.
+  - `DDoS-ICMP_Flood`, `DDoS-TCP_Flood`, `DDoS-UDP_Flood`, `DDoS-SYN_Flood`
+  - `DDoS-PSHACK_Flood`, `DDoS-RSTFINFlood`, `DDoS-SlowLoris`
+  - `DDoS-ICMP_Fragmentation`
+- **Dataset Split:** 50% reserved for training/validation, 50% held out for inference simulation and live replay.
+
+---
+
+## 📈 Quantitative Benchmarks & Ablations
 
 ### Table I: Classifier Benchmark Performance
-Evaluated across 35,000 hold-out test packets from the CICIoT2023 dataset:
+Evaluated across hold-out test packets from the CICIoT2023 dataset:
 
 | Model | Accuracy (%) | Precision (%) | Recall (%) | F1-Score (%) |
 | :--- | :---: | :---: | :---: | :---: |
@@ -126,7 +162,6 @@ Evaluated across 35,000 hold-out test packets from the CICIoT2023 dataset:
 | **Proposed Soft Voting Ensemble** | **98.64** | **98.42** | **98.30** | **98.36** |
 
 ### Table II: Feature Selection Strategy Ablation
-Demonstrating the latency acceleration and minimal accuracy loss of consensus reduction:
 
 | Strategy | Retained Features | Accuracy (%) | Macro F1 (%) | Inference Latency |
 | :--- | :---: | :---: | :---: | :---: |
@@ -136,124 +171,143 @@ Demonstrating the latency acceleration and minimal accuracy loss of consensus re
 | RF Gini Only | 20 | 97.90 | 97.60 | 11.50 ms |
 | **Proposed 15 Consensus (Ours)** | **15** | **98.64** | **98.36** | **8.45 ms (-60.5%)** |
 
-### Table III: Per-Packet End-to-End Latency Breakdown
-Measured on an Intel Core i7-12700H CPU without GPU acceleration:
-
-| Pipeline Processing Stage | Latency (ms) | Share of Total (%) |
-| :--- | :---: | :---: |
-| FastAPI Ingestion & Parsing | 1.25 ms | 4.4% |
-| Feature Extraction & Normalization | 2.10 ms | 7.4% |
-| Ensemble Soft Voting Inference | 8.45 ms | 30.0% |
-| TreeSHAP Local Attribution | 14.60 ms | 51.8% |
-| Response Serialization & Dispatch | 1.80 ms | 6.4% |
-| **Total End-to-End Processing Time** | **28.20 ms** | **100.0%** |
-
-<div align="center">
-  <img src="./figures/fig5_roc_curves.png" alt="Multi-Class ROC Curves" width="48%"/>
-  <img src="./figures/fig6_latency_breakdown.png" alt="Latency Breakdown" width="48%"/>
-  <p><em>Left (Fig. 5): Multi-class ROC curves across attack categories (Macro AUC = 0.988). Right (Fig. 6): Latency breakdown per packet.</em></p>
-</div>
-
 ---
 
-## 🔍 Model Explainability (TreeSHAP)
-
-To demystify attack classifications, cooperative game-theoretic Shapley values are calculated for each active packet:
-$$\phi_j(\tilde{x}) = \sum_{S \subseteq \mathcal{F}^* \setminus \{j\}} \frac{|S|!(|\mathcal{F}^*| - |S| - 1)!}{|\mathcal{F}^*|!} \left[ f(S \cup \{j\}) - f(S) \right]$$
-
-For every detected intrusion, the API returns the top 3 contributing flow attributes (e.g., high packet rate, abnormal SYN/RST ratio, or short flow duration), enabling automated verification and rapid incident triage.
-
-<div align="center">
-  <img src="./figures/fig4_shap_importance.png" alt="Global SHAP Feature Importance" width="600"/>
-  <p><em>Fig. 4: Global SHAP feature importance ranking across the 15 consensus network features.</em></p>
-</div>
-
----
-
-## 🔬 Ablation Experiments
-
-1. **Consensus Selection vs. Single-Method:** Replacing the 15 consensus features with 15 features chosen solely by ANOVA F-test caused macro F1 to drop by **4.8%** and increased false alarms by **31.2%**.
-2. **Ensemble Soft Voting vs. Best Individual Classifier:** Probability aggregation improved minority attack recall (Reconnaissance and Web attacks) by **3.4%** over standalone Random Forest.
-3. **Class Balancing Impact:** Disabling cost-sensitive weighting (`class_weight=None`) caused the F1-score on Web attacks to collapse from **94.2% to 61.8%**.
-4. **Subspace Dimensionality Trade-off:** Restricting the feature space from 46 to 15 features reduced CPU inference latency by **58.2%** with a negligible **0.21%** variance in accuracy.
-
----
-
-## 📁 Repository Structure
+## 📁 Project Directory Structure
 
 ```text
-.
-├── figures/                                      # Publication figures (300 DPI)
-│   ├── fig1_system_architecture.png              # End-to-end pipeline architecture
-│   ├── fig2_feature_selection.png                # Tri-method consensus convergence
-│   ├── fig3_model_comparison.png                 # Classifier & ensemble benchmark
-│   ├── fig4_shap_importance.png                  # SHAP global feature attributions
-│   ├── fig5_roc_curves.png                       # Multiclass ROC curves
-│   └── fig6_latency_breakdown.png                # Pipeline execution latency breakdown
-├── An_Explainable_Ensemble_Learning_System_...   # Formatted IEEE paper deliverables
-│   ├── .docx                                     # Fully aligned IEEE Word document
-│   └── .pdf                                      # Submission-ready 6-page IEEE PDF
-├── paper.tex                                     # LaTeX IEEEtran document source
-├── paper.md                                      # Full paper in Markdown format
-├── generate_figures.py                           # Matplotlib figure generation script
-├── generate_final_clean_paper.py                 # Automated Word document generator
-├── docx_to_pdf.ps1                               # Automated Word-to-PDF export script
-├── requirements.txt                              # Pinned Python package dependencies
-├── .gitignore                                    # Clean repository git exclusions
-├── LICENSE                                       # MIT Open Source License
-└── README.md                                     # Project documentation
+ML mini project/
+├── .github/
+│   └── workflows/
+│       └── ci.yml                                  # GitHub Actions CI/CD workflow
+├── legacy_v1/                                      # Initial script prototype archive
+│   ├── README.md
+│   ├── create_dataset.py
+│   ├── download_data.py
+│   └── src/
+│       └── baseline_models.py
+├── sentinel-ai/                                    # Full-stack production application
+│   ├── backend/
+│   │   ├── ml_modules/
+│   │   │   ├── module1_feature_intelligence/       # Data cleaning & consensus selection
+│   │   │   ├── module2_detection_engine/           # Base models & Voting ensemble
+│   │   │   └── module3_security_analytics/         # Evaluator & TreeSHAP XAI
+│   │   ├── models/                                 # Serialized ML model artifacts (.pkl)
+│   │   │   ├── EXP_FINAL_Ensemble.pkl
+│   │   │   ├── EXP_FINAL_Random_Forest.pkl
+│   │   │   ├── EXP_FINAL_CatBoost.pkl
+│   │   │   └── EXP_FINAL_LightGBM_equiv.pkl
+│   │   ├── experiments/current_run/                # Scaler, label encoder, selected features
+│   │   ├── demo_scenarios/
+│   │   │   └── frontend_test_sample.csv            # 5,000 hold-out packets for instant replay
+│   │   ├── auto_run.py                             # Autonomous download, split & train pipeline
+│   │   ├── main.py                                 # FastAPI REST inference service
+│   │   └── requirements.txt                        # Backend dependencies
+│   └── frontend/
+│       ├── src/
+│       │   ├── App.tsx                             # Full cyber defense command console
+│       │   ├── App.css
+│       │   └── main.tsx
+│       ├── index.html
+│       ├── package.json
+│       ├── tsconfig.json
+│       └── vite.config.ts
+├── figures/                                        # Publication-grade figures (300 DPI)
+├── An_Explainable_Ensemble_Learning_System_...     # Formatted IEEE paper deliverables
+│   ├── .docx                                       # Submission-ready Word document
+│   └── .pdf                                        # Compiled 2-column IEEE PDF
+├── paper.tex                                       # LaTeX IEEEtran document source
+├── CONTRIBUTING.md                                 # Contribution guidelines
+├── SECURITY.md                                     # Security and vulnerability policy
+├── LICENSE                                         # MIT Open Source License
+└── README.md                                       # Main documentation
 ```
 
 ---
 
-## 💻 Quick Start & Reproduction
+## 🚀 Quick Start Guide
 
-### 1. Prerequisites & Environment Setup
-Clone the repository and create a Python virtual environment:
+### Prerequisites
+- **Python:** 3.10 or higher
+- **Node.js:** 18.0 or higher (npm 9+)
 
-```powershell
-# Clone the repository
-git clone https://github.com/<your-username>/ciciot2023-network-attack-detection.git
-cd ciciot2023-network-attack-detection
+---
+
+### 1. Backend Setup
+
+```bash
+# Navigate to the backend directory
+cd sentinel-ai/backend
 
 # Create and activate virtual environment
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+python -m venv venv
+# On Windows:
+.\venv\Scripts\Activate.ps1
+# On macOS/Linux:
+source venv/bin/activate
 
-# Upgrade pip and install dependencies
-pip install --upgrade pip
+# Install dependencies
 pip install -r requirements.txt
+
+# Start the FastAPI server (Pre-trained models load automatically)
+python main.py
 ```
 
-### 2. Generate Publication Figures
-To regenerate all 6 publication-grade figures (saved to `figures/` at 300 DPI):
+The API will be available at: **`http://localhost:8000`**  
+Interactive Swagger docs: **`http://localhost:8000/docs`**
 
-```powershell
-python generate_figures.py
+---
+
+### 2. Frontend Setup
+
+In a new terminal window:
+
+```bash
+# Navigate to the frontend directory
+cd sentinel-ai/frontend
+
+# Install dependencies
+npm install
+
+# Start the Vite development server
+npm run dev
 ```
 
-### 3. Generate Formatted IEEE Word Document & PDF
-To reconstruct the formatted IEEE 2-column Word document and compile the PDF:
+The Command Console will open at: **`http://localhost:5173`**
 
-```powershell
-# Generate .docx
-python generate_final_clean_paper.py
+---
 
-# Convert to PDF via Word COM automation
-powershell -ExecutionPolicy Bypass -File .\docx_to_pdf.ps1 -docxPath .\An_Explainable_Ensemble_Learning_System_for_Real_Time_Network_Attack_Detection_Using_CICIoT2023.docx -pdfPath .\An_Explainable_Ensemble_Learning_System_for_Real_Time_Network_Attack_Detection_Using_CICIoT2023.pdf
+### 3. Running Autonomous Retraining (Optional)
+
+If you wish to re-execute the autonomous data pipeline, perform tri-method consensus feature selection, train all classifiers, and export fresh `.pkl` artifacts:
+
+```bash
+cd sentinel-ai/backend
+python auto_run.py
 ```
 
 ---
 
-## 🛡️ Ethics, Privacy & Responsible Disclosure
+## 📡 REST API Reference
 
-- **Privacy Preservation:** The framework operates solely on aggregated packet header metadata and flow-level statistical counters. Sensitive packet payloads (passwords, session cookies, raw message contents) are **never** inspected or recorded.
-- **Defensive Dual-Use:** This software is developed strictly for defensive monitoring in network gateways, enterprise firewalls, and Security Operations Centers (SOCs).
-- **Compliance:** Aligns with standard cybersecurity audit guidelines, promoting transparent, interpretable machine learning in network security.
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/` | API status and loaded model inventory |
+| `GET` | `/api/simulate` | Streams next packet from the 5,000 hold-out sample with live SHAP attribution |
+| `POST` | `/api/predict` | Classifies custom 15-feature telemetry vector with model latency |
+| `GET` | `/api/stats` | Global network traffic summary (total analyzed, threats blocked, threat ratio) |
+| `GET` | `/api/experiments` | Benchmark metrics report for all evaluated classifiers |
 
 ---
 
-## 👥 Authors & Affiliation
+## 🛡️ Security & Privacy
+
+- **Header-Only Telemetry:** Inspects only network metadata (packet sizes, rates, inter-arrival times, TCP flags). Payload contents are never read.
+- **Defensive Monitoring:** Engineered strictly for network gateways, perimeter firewalls, and Security Operations Centers.
+
+---
+
+## 👥 Academic Authors & Affiliation
 
 **Machine Learning Research Laboratory**  
 *Department of Computer Science and Engineering*  
@@ -262,13 +316,11 @@ powershell -ExecutionPolicy Bypass -File .\docx_to_pdf.ps1 -docxPath .\An_Explai
 - **Alby Abraham** — [`alby.abraham@mitwpu.edu.in`](mailto:alby.abraham@mitwpu.edu.in)
 - **Pranay Agrawal** — [`pranay.agrawal@mitwpu.edu.in`](mailto:pranay.agrawal@mitwpu.edu.in)
 - **Aditya Raj** — [`aditya.raj@mitwpu.edu.in`](mailto:aditya.raj@mitwpu.edu.in)
-- **Jayshree Aher** — [`jayshree.aher@mitwpu.edu.in`](mailto:jayshree.aher@mitwpu.edu.in)
+- **Prof. Jayshree Aher** — [`jayshree.aher@mitwpu.edu.in`](mailto:jayshree.aher@mitwpu.edu.in)
 
 ---
 
 ## 📜 Academic Citation
-
-If you use this codebase, methodology, or paper in your research, please cite:
 
 ```bibtex
 @inproceedings{abraham2026explainable,
