@@ -1,0 +1,20 @@
+{
+    "selected_features": [
+        "Protocol Type",
+        "Rate",
+        "Number",
+        "Radius",
+        "ICMP",
+        "Tot sum",
+        "Max",
+        "SMTP",
+        "SSH",
+        "Min",
+        "IRC",
+        "Tot size",
+        "Std",
+        "Variance",
+        "LLC"
+    ],
+    "n_features": 15
+}
